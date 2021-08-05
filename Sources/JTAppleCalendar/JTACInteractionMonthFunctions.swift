@@ -93,8 +93,10 @@ extension JTACMonthView {
         guard
             let calendar = _cachedConfiguration?.calendar,
             let startMonth = startOfMonthCache,
-            let monthIndex = calendar.dateComponents([.month], from: startMonth, to: date).month else {
-                return nil
+            let monthIndex = calendar.dateComponents([.month], from: startMonth, to: date).month,
+            monthInfo.indices.contains(monthIndex)
+        else {
+            return nil
         }
         return monthInfo[monthIndex]
     }
